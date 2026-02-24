@@ -17,8 +17,3 @@ button:nth-of-type(3n + 1) .project-button-text {
 button:nth-of-type(3n + 1) .project-button-text:hover {
   filter: drop-shadow(0 0 1em #2a42dfaa);
 }
-
-/* button:nth-of-type(3n + 2) .project-button-text {
-  filter: drop-shadow(0 0 1em #692404aa);
-  color: #692404aa;
-} */

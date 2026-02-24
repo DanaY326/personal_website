@@ -66,17 +66,6 @@ button {
   transition: border-color 0.25s;
 }
 
-button:focus,
-button:focus-visible {
-  /* outline: 4px auto -webkit-focus-ring-color; */
-}
-
-@font-face{
-  font-family: "Sekaiwo";
-  src:local("Sekaiwo-Regular"),
-  url('./assets/fonts/Sekaiwo-Regular.ttf') 
-}
-
 @font-face{
   font-family: "RiverHack";
   src:local("RIVERHACK"),
@@ -84,51 +73,9 @@ button:focus-visible {
 }
 
 @font-face{
-  font-family: "Permanent Marker";
-  src:local("PermanentMarker-Regular"),
-  url('./assets/fonts/PermanentMarker-Regular.ttf') 
-}
-
-@font-face{
-  font-family: "Merienda";
-  src:local("Merienda-VariableFont_wght"),
-  url('./assets/fonts/Merienda-VariableFont_wght.ttf') 
-}
-
-@font-face{
-  font-family: "Grand Hotel";
-  src:local("GrandHotel-Regular"),
-  url('./assets/fonts/GrandHotel-Regular.ttf') 
-}
-
-@font-face{
-  font-family: "FrederickatheGreat";
-  src:local("FrederickatheGreat-Regular"),
-  url('./assets/fonts/FrederickatheGreat-Regular.ttf') 
-}
-
-@font-face{
   font-family: "PoiretOne";
   src:local("PoiretOne-Regular"),
   url('./assets/fonts/PoiretOne-Regular.ttf') 
-}
-
-@font-face{
-  font-family: "Andika";
-  src:local("Andika-Bold"),
-  url('./assets/fonts/Andika-Bold.ttf') 
-}
-
-@font-face{
-  font-family: "Mohave";
-  src:local("Mohave-Regular"),
-  url('./assets/fonts/Mohave-Regular.ttf') 
-}
-
-@font-face{
-  font-family: "Righteous";
-  src:local("Righteous-Regular"),
-  url('./assets/fonts/Righteous-Regular.ttf') 
 }
 
 @media (prefers-color-scheme: light) {

@@ -1,4 +1,5 @@
 import Obstacle from "./Obstacle";
+import type { Sprite } from "./Obstacle"
 
 interface imageInfo {
     width: number;
@@ -65,13 +66,13 @@ export default class ObstacleController {
         // console.log(this.obstacles);
     }
 
-    collideWith(sprite) {
+    collideWith(sprite: Sprite) {
         return this.obstacles.some((obstacle) => {
             return obstacle.collideWith(sprite);
         })
     }
 
-    jumpedOver(sprite, gameSpeed: number, frameTimeDelta: number) {
+    jumpedOver(sprite: Sprite, gameSpeed: number, frameTimeDelta: number) {
         // console.log(this.obstacles.find((obstacle) => {
         //     return obstacle.jumpedOver(sprite);
         // }));
@@ -89,7 +90,7 @@ export default class ObstacleController {
         }
         this.nextObstacleInterval -= frameTimeDelta;
         
-        this.obstacles.forEach((obstacle, index) => {
+        this.obstacles.forEach((obstacle) => {
             obstacle.update(this.speed, gameSpeed, frameTimeDelta, this.scaleRatio);
         });
 

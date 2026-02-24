@@ -1,4 +1,5 @@
-import { ReactNode, useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import type { ReactNode } from "react";
 import "./popup.css"
 
 interface DraggablePopupProps {
@@ -17,7 +18,6 @@ const Popup: React.FC<DraggablePopupProps> = ({
     const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0});
     const startPos = useRef<{ x: number, y: number }>({ x: 0, y: 0 });
     const popupRef = useRef<HTMLDivElement>(null);
-    const view = document.getElementById("popup-content");
 
     const onMouseMove = useCallback((e: MouseEvent) => {
         if (!isDragging) return;

@@ -84,21 +84,20 @@ export default class Player {
 
     update(gameSpeed: number, frameTimeDelta: number) {
         this.run(gameSpeed, frameTimeDelta);
-        // console.log(this.jumpPressed);
         if (this.jumpInProgress) {
             this.image = this.standingStillImage;
         }
         this.jump(frameTimeDelta);
     }
 
-    keyDown = (event) => {
+    keyDown = (event: KeyboardEvent) => {
         if (event.code === "Space") {
             event.preventDefault();
             this.jumpPressed = true;
         }
     }
 
-    keyUp = (event) => {
+    keyUp = (event: KeyboardEvent) => {
         if (event.code === "Space") {
             this.jumpPressed = false;
         }

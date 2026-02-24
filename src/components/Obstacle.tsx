@@ -1,5 +1,12 @@
 // import Player from "./Player";
 
+export interface Sprite {
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+}
+
 export default class Obstacle {
     ctx: CanvasRenderingContext2D;
     x: number;
@@ -25,7 +32,7 @@ export default class Obstacle {
         this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
-    collideWith(sprite) {
+    collideWith(sprite: Sprite) {
         const adjustBy = 1.2;
         if (
             sprite.x < this.x + this.width / adjustBy &&

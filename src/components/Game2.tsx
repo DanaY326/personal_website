@@ -1,6 +1,5 @@
 import { useState, memo, useMemo } from "react";
 import "./game2.css"
-import Popup from "./Popup";
 import Player from './Player'
 import Ground from './Ground'
 import ObstacleController from "./ObstacleController";
@@ -9,7 +8,6 @@ import cppImg from '../assets/game/cpp.png'
 import jsImg from '../assets/game/js.png'
 import pythonImg from '../assets/game/python.png'
 import reactImg from '../assets/game/react.png'
-import bugImg from '../assets/game/bug.png'
 
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 200;
@@ -96,30 +94,29 @@ const Game = () => {
     let previousTime: number | null = null;
     let gameSpeed = GAME_SPEED_START;
     let gameOver = false;
-    const [openPopup, setOpenPopup] = useState(false);
-    const [isGamePopupOpen, setIsGamePopupOpen] = useState(false);
     let hasAddedEventListenersForRestart = false;
     let waitingToStart = true;
     const [firstTime, setFirstTime] = useState(true);
     let gameOverCounter = 1;
     
     const createSprites = (scaleRatio: number) => {
-        const playerWidthInGame = PLAYER_WIDTH * scaleRatio;
-        const playerHeightInGame = PLAYER_HEIGHT * scaleRatio;
-        const minJumpHeightInGame = MIN_JUMP_HEIGHT * scaleRatio;
-        const maxJumpHeightInGame = MAX_JUMP_HEIGHT * scaleRatio;
+        if (ctx) {
+            const playerWidthInGame = PLAYER_WIDTH * scaleRatio;
+            const playerHeightInGame = PLAYER_HEIGHT * scaleRatio;
+            const minJumpHeightInGame = MIN_JUMP_HEIGHT * scaleRatio;
+            const maxJumpHeightInGame = MAX_JUMP_HEIGHT * scaleRatio;
 
-        const groundWidthInGame = GROUND_WIDTH * scaleRatio;
-        const groundHeightInGame = GROUND_HEIGHT * scaleRatio;
+            const groundWidthInGame = GROUND_WIDTH * scaleRatio;
+            const groundHeightInGame = GROUND_HEIGHT * scaleRatio;
 
-        player = new Player(ctx, playerWidthInGame, playerHeightInGame, minJumpHeightInGame, maxJumpHeightInGame, scaleRatio);
-        ground = new Ground(ctx, groundWidthInGame, groundHeightInGame, GROUND_AND_OBSTACLE_SPEED, scaleRatio);
+            player = new Player(ctx, playerWidthInGame, playerHeightInGame, minJumpHeightInGame, maxJumpHeightInGame, scaleRatio);
+            ground = new Ground(ctx, groundWidthInGame, groundHeightInGame, GROUND_AND_OBSTACLE_SPEED, scaleRatio);
 
-        obstacleController = new ObstacleController(ctx, obstacleImages, scaleRatio, GROUND_AND_OBSTACLE_SPEED);
+            obstacleController = new ObstacleController(ctx, obstacleImages, scaleRatio, GROUND_AND_OBSTACLE_SPEED);
+        }
     }
 
     const setScreen = () => {
-        // console.log("canvas: ", canvas);
         if (canvas) {
             ctx = canvas.getContext("2d");
             const scaleRatio = getScaleRatio();
@@ -129,7 +126,6 @@ const Game = () => {
         }
     }
     
-    // setTimeout(() => {setScreen(); requestAnimationFrame(gameLoop);}, 2000);
     setScreen(); 
 
     window.addEventListener('resize', () => {setTimeout(setScreen, 500)});
@@ -154,10 +150,9 @@ const Game = () => {
                 window.addEventListener('touchstart', reset, {once: true});
             }, 1000);
         }
-        // setOpenPopup(true);
     }
 
-    const keyReset = (event) => {
+    const keyReset = (event: KeyboardEvent) => {
         if (event.code === "Space") {
             reset();
         }
@@ -230,7 +225,7 @@ const Game = () => {
             // console.log(scores);
         }
 
-        if (!gameOver && obstacleController?.collideWith(player)) {
+        if (!gameOver && player && obstacleController?.collideWith(player)) {
             gameOver = true;
             gameOverCounter = 100;
             setupGameReset();
@@ -262,9 +257,6 @@ const Game = () => {
 
     return (
         <div>
-            <Popup isOpen={openPopup} onClose={() => {setOpenPopup(false);}}>
-                <p className="marker">Game Over</p>
-            </Popup>
             <canvas id="game" width={GAME_WIDTH * scaleRatio} height={GAME_HEIGHT * getScaleRatio()}></canvas>
         </div>
     )

@@ -10,14 +10,14 @@ const projectList = [
     "Midnight Sun Rayce Car Team"
 ]
 
-const Projects = ({openProject}) => {
-    // console.log(typeof openProject);
+const Projects = (props: {openProject: React.Dispatch<React.SetStateAction<string>>}) => {
+    const {openProject} = props;
     return (
         <div className="project-container">
             {projectList.map((name: string) => {
                 return (
                     <button className="project-button" title="Click me" onClick={() => openProject(name)}>
-                        <p className="marker github project-button-text">{name}</p>
+                        <p className="body-text black-hover project-button-text">{name}</p>
                     </button>
                 );
             })}

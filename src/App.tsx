@@ -1,19 +1,17 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import linkedinLogo from './assets/linkedin.png'
 import githubLogo from './assets/github.png'
 import goosePic from './assets/goose.png'
 import gooseSign from './assets/goose_sign.jpg'
 import alu from './assets/alu.png'
-import home from './assets/home.png'
 import mail from './assets/mail.png'
 import portfolio_closed from './assets/portfolio-closed.png'
 import portfolio_opened from './assets/portfolio-opened.png'
 import bug from './assets/game/bug.png'
 import './App.css'
 import './index.css'
-import "./assets/fonts/PlaywriteCUGuides-Regular.ttf";
 import Popup from "./components/Popup"
-import Game, {getScaleRatio} from "./components/Game2"
+import Game from "./components/Game2"
 import Projects from "./components/Projects"
 import ProjectDescriptions from "./components/ProjectDescriptions"
 
@@ -32,8 +30,6 @@ function App() {
     setIsProjectsOpen(!isProjectsOpen);
   }
 
-  // console.log(typeof openPopup)
-
   return (
     <div>
       <Popup isOpen={isPopupOpen} onClose={closePopup}>
@@ -50,32 +46,29 @@ function App() {
       <ProjectDescriptions openProjectName={openProject} closeProject={() => setOpenProject("")}/>
       <div  style={{filter: isPopupOpen || openProject !== "" ? 'blur(1.5px)' : ''}}>
         <div className="navbar">
-          {/* <button onClick={() => setIsProjectsOpen(false)}>
-            <img src={home} title="Home" className="logo github" alt="Home button" />
-          </button> */}
           <button onClick={() => toggleProjects()}>
             {isProjectsOpen ?  
-            <img src={portfolio_opened} title="Projects" className="logo github" alt="Projects button"/>: 
-            <img src={portfolio_closed} title="Projects" className="logo projects" alt="Image of open portfolio"/>}
+            <img src={portfolio_opened} title="Projects" className="logo black-hover" alt="Projects button"/>: 
+            <img src={portfolio_closed} title="Projects" className="logo brown-hover" alt="Image of open portfolio"/>}
           </button>
           <button onClick={openPopup}>
-            <img src={goosePic} title="Education" className="logo github" alt="Goose picture" style={{/*filter: 'blur(0.5px)'*/}} />
+            <img src={goosePic} title="Education" className="logo black-hover" alt="Goose picture" style={{/*filter: 'blur(0.5px)'*/}} />
           </button>
           <a href="https://www.linkedin.com/in/dana-yuan/" target="_blank">
-            <img title="LinkedIn" src={linkedinLogo} className="logo linkedin" alt="LinkedIn logo" />
+            <img title="LinkedIn" src={linkedinLogo} className="logo blue-hover" alt="LinkedIn logo" />
           </a>
           <a href="https://www.github.com/DanaY326" target="_blank">
-            <img title="GitHub" src={githubLogo} className="logo github" alt="GitHub logo" />
+            <img title="GitHub" src={githubLogo} className="logo black-hover" alt="GitHub logo" />
           </a>
           <a href="mailto:dana.z.yuan@gmail.com" target="_blank">
-            <img title="Email me" src={mail} className="logo github" alt="GitHub logo" />
+            <img title="Email me" src={mail} className="logo black-hover" alt="Mail icon" />
           </a>
         </div>
         <div style={{display: isProjectsOpen ? "none" : "block"}}>
           {isFirstTimeOpeningGame && 
           <div className="game">
             <button onClick={() => setIsGamePopupOpen(true)} className="innerButton">
-              <img src={bug} title="Skills" className="logo projects bug" alt="Bug picture"/>
+              <img src={bug} title="Skills" className="logo brown-hover bug" alt="Bug picture"/>
             </button>
           </div>}
           <div style={{display: isFirstTimeOpeningGame ? "none" : "block"}}>
@@ -83,9 +76,9 @@ function App() {
           </div>
           <div>
             <h1 className="bio riverHack">Hi, I'm Dana!</h1>
-            <p className="bio marker">I love building software. I also love drawing (badly).</p>
-            <p className="bio marker">Click on my doodles to find out more!</p>
-            {/* <p className="bio marker">[Written in React and deployed through Kubernetes]</p> */}
+            <p className="bio body-text">I love building software. I also love drawing (badly).</p>
+            <p className="bio body-text">Click on my doodles to find out more!</p>
+            {/* <p className="bio body-text">[Written in React and deployed through Kubernetes]</p> */}
           </div>
         </div>
         <div style={{display: isProjectsOpen ? "block" : "none"}}>
