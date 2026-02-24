@@ -1,0 +1,24 @@
+
+
+.project-container {
+    max-width: 600px;
+}
+
+.project-button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+button:nth-of-type(3n + 1) .project-button-text {
+  color: #2a42dfaa;
+}
+
+
+button:nth-of-type(3n + 1) .project-button-text:hover {
+  filter: drop-shadow(0 0 1em #2a42dfaa);
+}
+
+/* button:nth-of-type(3n + 2) .project-button-text {
+  filter: drop-shadow(0 0 1em #692404aa);
+  color: #692404aa;
+} */

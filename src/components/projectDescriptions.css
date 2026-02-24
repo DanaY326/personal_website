@@ -1,0 +1,23 @@
+.link-icon {
+    height: 1em;
+    padding-left: 0.5em;
+    transform: rotate(5deg);
+}
+
+#video {
+    max-width: 480px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+a .purple {
+    display: none;
+}
+
+a:hover .black {
+    display: none;
+}
+
+a:hover .purple {
+    display: inline;
+}

@@ -17,6 +17,7 @@ const Popup: React.FC<DraggablePopupProps> = ({
     const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0});
     const startPos = useRef<{ x: number, y: number }>({ x: 0, y: 0 });
     const popupRef = useRef<HTMLDivElement>(null);
+    const view = document.getElementById("popup-content");
 
     const onMouseMove = useCallback((e: MouseEvent) => {
         if (!isDragging) return;
@@ -54,7 +55,8 @@ const Popup: React.FC<DraggablePopupProps> = ({
                 style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
                 onMouseDown={onMouseDown}
             >
-                <div className="popup-content">
+                <div id="popup-content">
+                    {/* <div className={view.scrollHeight - view.scrollTop - view.clientHeight < 1 ? "" : "scroll-shadow"} /> */}
                     {children}
                 </div>
                 <button className="popup-close" onClick={onClose}>
