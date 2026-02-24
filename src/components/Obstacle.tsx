@@ -1,5 +1,3 @@
-// import Player from "./Player";
-
 export interface Sprite {
     x: number;
     y: number;
@@ -45,7 +43,7 @@ export default class Obstacle {
         return false;
     }
 
-    jumpedOver(sprite, gameSpeed: number, frameTimeDelta: number) {
+    jumpedOver(sprite: Sprite, gameSpeed: number, frameTimeDelta: number) {
         const adjustBy = 1.2;
         if (
             sprite.x > this.x + this.width / adjustBy &&

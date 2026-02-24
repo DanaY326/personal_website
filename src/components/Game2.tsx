@@ -197,7 +197,6 @@ const Game = () => {
     }
 
     const gameLoop = (currentTime: number) => {
-        // console.log(gameSpeed);
         if (previousTime === null) {
             previousTime = currentTime;
             requestAnimationFrame(gameLoop);
