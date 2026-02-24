@@ -1,4 +1,4 @@
-import { useState, memo, useMemo } from "react";
+import { useState } from "react";
 import "./game2.css"
 import Player from './Player'
 import Ground from './Ground'
@@ -34,10 +34,6 @@ export const getScaleRatio = () => {
         return screenHeight / GAME_HEIGHT;
     }
 }
-
-interface Hash {
-    [image: string] : number;
-} 
 
 const Game = () => {
     const canvas = document.getElementById("game") as HTMLCanvasElement;
@@ -78,14 +74,6 @@ const Game = () => {
             height: obstacle.height * scaleRatio,
         }
     });
-
-
-    let scores: Hash = {};
-    obstacleImages.forEach((img) => {
-        if (!scores[img.image.src]) {
-            scores[img.image.src] = 0;
-        }
-    })
 
     let player: Player | null = null;
     let ground: Ground | null = null;
@@ -152,16 +140,8 @@ const Game = () => {
         }
     }
 
-    const keyReset = (event: KeyboardEvent) => {
-        if (event.code === "Space") {
-            reset();
-        }
-    }
-
     const reset = () => {
         hasAddedEventListenersForRestart = false;
-        // window.removeEventListener('keydown', reset);
-        // window.removeEventListener('touchstart', reset);
         gameOver = false;
         waitingToStart = false;
         setFirstTime(false);
@@ -213,15 +193,6 @@ const Game = () => {
             ground?.update(gameSpeed, frameTimeDelta);
             player?.update(gameSpeed, frameTimeDelta);
             updateGameSpeed(frameTimeDelta);
-
-            const jumpedObstacle = obstacleController?.jumpedOver(player);
-            // console.log(jumpedObstacle);
-
-            if (jumpedObstacle) {
-                // console.log(scores[jumpedObstacle.image.src]);
-                scores[jumpedObstacle.image.src] += 1;
-            }
-            // console.log(scores);
         }
 
         if (!gameOver && player && obstacleController?.collideWith(player)) {

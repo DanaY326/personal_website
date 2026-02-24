@@ -42,16 +42,4 @@ export default class Obstacle {
         }
         return false;
     }
-
-    jumpedOver(sprite: Sprite, gameSpeed: number, frameTimeDelta: number) {
-        const adjustBy = 1.2;
-        if (
-            sprite.x > this.x + this.width / adjustBy &&
-            sprite.y >= this.y + this.height / adjustBy &&
-            sprite.height + sprite.y / adjustBy <= this.y
-        ) {
-            return true;   
-        }
-        return false;
-    }
 }

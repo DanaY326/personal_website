@@ -7,11 +7,6 @@ interface imageInfo {
     image: HTMLImageElement;
 }
 
-interface score {
-    image: imageInfo;
-    score: number;
-}
-
 export default class ObstacleController {
 
     ctx: CanvasRenderingContext2D;
@@ -21,7 +16,6 @@ export default class ObstacleController {
     speed: number;
     nextObstacleInterval: number;
     obstacles: Obstacle[];
-    // scores: score[];
 
     OBSTACLE_INTERVAL_MIN = 500;
     OBSTACLE_INTERVAL_MAX = 2000;
@@ -69,16 +63,6 @@ export default class ObstacleController {
     collideWith(sprite: Sprite) {
         return this.obstacles.some((obstacle) => {
             return obstacle.collideWith(sprite);
-        })
-    }
-
-    jumpedOver(sprite: Sprite, gameSpeed: number, frameTimeDelta: number) {
-        // console.log(this.obstacles.find((obstacle) => {
-        //     return obstacle.jumpedOver(sprite);
-        // }));
-        // return this.obstacles[0];
-        return this.obstacles.find((obstacle) => {
-            return obstacle.jumpedOver(sprite, gameSpeed, frameTimeDelta);
         })
     }
 
