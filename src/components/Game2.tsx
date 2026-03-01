@@ -221,8 +221,10 @@ const Game = () => {
 
     requestAnimationFrame(gameLoop);
 
-    window.addEventListener('keydown', reset, {once: true, capture: true});
-    window.addEventListener('touchstart', reset, {once: true, capture: true});
+    // setTimeout(() => {
+        window.addEventListener('keydown', reset, {once: true, capture: true});
+        window.addEventListener('touchstart', reset, {once: true, capture: true});
+    // }, 0)
 
     return (
         <div>

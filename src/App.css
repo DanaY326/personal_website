@@ -69,29 +69,3 @@
 .body-text {
   font-family: "PoiretOne"
 }
-
-.game {
-  justify-content: center;
-}
-
-.innerButton {
-  border: 2px solid grey;
-  aspect-ratio: 4/1;
-  max-width: 640px;
-  width: 90%;
-  border-radius: 0;
-  position: relative;
-}
-
-.bug {
-  position: absolute;
-  bottom: -25px;
-  left: -35px;
-  width: 10%;
-  display: none;
-}
-
-button:hover .bug {
-  display: block;
-}
-
