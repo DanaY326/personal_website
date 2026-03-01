@@ -74,6 +74,7 @@ const Game = () => {
     let waitingToStart = true;
     const [firstTime, setFirstTime] = useState(true);
     let gameOverCounter = 1;
+    let instructionCounter = 1;
     
     const createSprites = (scaleRatio: number) => {
         if (ctx) {
@@ -134,7 +135,7 @@ const Game = () => {
             setTimeout(() => {
                 window.addEventListener('keydown', reset, {once: true});
                 window.addEventListener('touchstart', reset, {once: true});
-            }, 1000);
+            }, 200);
         }
     }
 
@@ -197,6 +198,7 @@ const Game = () => {
         if (!gameOver && player && obstacleController?.collideWith(player)) {
             gameOver = true;
             gameOverCounter = 100;
+            instructionCounter = 100;
             setupGameReset();
         }
 
@@ -208,7 +210,7 @@ const Game = () => {
         if (gameOver && gameOverCounter > 0) {
             showGameOverText();
             --gameOverCounter;
-        } else if (gameOver) {
+        } else if (gameOver && instructionCounter > 0) {
             showStartingGameText();
         }
 
@@ -221,10 +223,9 @@ const Game = () => {
 
     requestAnimationFrame(gameLoop);
 
-    // setTimeout(() => {
-        window.addEventListener('keydown', reset, {once: true, capture: true});
-        window.addEventListener('touchstart', reset, {once: true, capture: true});
-    // }, 0)
+    window.addEventListener('keydown', reset, {once: true, capture: true});
+    window.addEventListener('touchstart', reset, {once: true, capture: true});
+
 
     return (
         <div>

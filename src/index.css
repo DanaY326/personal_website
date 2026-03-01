@@ -44,6 +44,9 @@ p {
 }
 
 button {
+  all: unset;
+  -webkit-background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
   background-color: transparent;
   border: transparent;
   color: black;
@@ -51,15 +54,13 @@ button {
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-}
-
-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
 input { 
+  all: unset;
   -webkit-appearance:none; 
   -moz-appearance: none;
   appearance: none;
@@ -75,17 +76,4 @@ input {
   font-family: "PoiretOne";
   src:local("PoiretOne-Regular"),
   url('./assets/fonts/PoiretOne-Regular.ttf') 
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #2a42dfaa;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
