@@ -63,18 +63,6 @@ const Game = () => {
         {width: 68 / 1.5, height: 70 / 1.5, image: reactImg},
     ]
 
-    const scaleRatio = getScaleRatio();
-  
-    const obstacleImages = OBSTACLE_CONFIG.map(obstacle => {
-        const image = new Image();
-        image.src = obstacle.image;
-        return {
-            image: image, 
-            width: obstacle.width * scaleRatio,
-            height: obstacle.height * scaleRatio,
-        }
-    });
-
     let player: Player | null = null;
     let ground: Ground | null = null;
     let obstacleController: ObstacleController | null = null;
@@ -99,6 +87,16 @@ const Game = () => {
 
             player = new Player(ctx, playerWidthInGame, playerHeightInGame, minJumpHeightInGame, maxJumpHeightInGame, scaleRatio);
             ground = new Ground(ctx, groundWidthInGame, groundHeightInGame, GROUND_AND_OBSTACLE_SPEED, scaleRatio);
+
+            const obstacleImages = OBSTACLE_CONFIG.map(obstacle => {
+                const image = new Image();
+                image.src = obstacle.image;
+                return {
+                    image: image, 
+                    width: obstacle.width * scaleRatio,
+                    height: obstacle.height * scaleRatio,
+                }
+            });
 
             obstacleController = new ObstacleController(ctx, obstacleImages, scaleRatio, GROUND_AND_OBSTACLE_SPEED);
         }
@@ -140,7 +138,8 @@ const Game = () => {
         }
     }
 
-    const reset = () => {
+    const reset = (event: Event) => {
+        event.stopPropagation();
         hasAddedEventListenersForRestart = false;
         gameOver = false;
         waitingToStart = false;
@@ -209,6 +208,8 @@ const Game = () => {
         if (gameOver && gameOverCounter > 0) {
             showGameOverText();
             --gameOverCounter;
+        } else if (gameOver) {
+            showStartingGameText();
         }
 
         if (firstTime) {
@@ -220,14 +221,12 @@ const Game = () => {
 
     requestAnimationFrame(gameLoop);
 
-    // setTimeout(() => {
-        window.addEventListener('keydown', reset, {once: true});
-        window.addEventListener('touchstart', reset, {once: true});
-    // }, 0)
+    window.addEventListener('keydown', reset, {once: true, capture: true});
+    window.addEventListener('touchstart', reset, {once: true, capture: true});
 
     return (
         <div>
-            <canvas id="game" width={GAME_WIDTH * scaleRatio} height={GAME_HEIGHT * getScaleRatio()}></canvas>
+            <canvas id="game"></canvas>
         </div>
     )
 }

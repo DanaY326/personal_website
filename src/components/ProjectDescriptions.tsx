@@ -17,8 +17,8 @@ const projectList: projectInfo[] = [
         description: "As part of my previous internship, I built and deployed a GUI for LangChain, a tool used to build AI agent workflows. Some functionalities that I supported were vector databases, MCP servers and LLM APIs. This significantly streamlined the workflow for adding AI features to the company's medical software."
     },
     {
-        name: "PDF vector search", 
-        description: "I used RAG and a HuggingFace library to allow users to search through the text and images in PDFs. I wanted to learn about machine learning concepts and semantic search", 
+        name: "PDF Vector Search", 
+        description: "I made a web app that allows users to perform semantic search through the images and text in PDFs, where similar images and words to the search phrase are found. To do so, I used a HuggingFace library to create a RAG pipeline, which powers a vector search function. I wanted to learn about machine learning concepts and semantic/vector search.", 
         videoUrl: "https://www.youtube.com/embed/uokCXtcg0_w",
         url: "https://github.com/DanaY326/pdf-vector-search"
     },
@@ -50,6 +50,10 @@ const projectList: projectInfo[] = [
         name:"Midnight Sun Rayce Car Team",
         description: "I'm contributing to the firmware for a solar race car design team at UWaterloo. It's been a great learning experience applying what I learned in class about C to the real world. Currently, I'm modifying the audio systems to use amplitude modulation to increase the volume, which is too quiet for time-sensitive functions like turn signals.",
         url: "https://www.uwmidsun.com"
+    },
+    {
+        name:"This Website",
+        description: "Written in React and TypeScript with Vite, this portfolio website was lots of fun to build!",
     }
 ];
 
@@ -62,7 +66,7 @@ const ProjectDescriptions = (props: {openProjectName: string, closeProject: any}
                 return (
                     <Popup isOpen={openProjectName === project.name} onClose={closeProject}>
                         <h1 className='riverHack'>
-                            {project.url ? 
+                            {project.url && !project.url2 ? 
                             <a href={project.url} target="_blank" title="Open link">
                                 {project.name}
                                 <img src={link} className="link-icon black" alt="Open Link" />
@@ -70,6 +74,20 @@ const ProjectDescriptions = (props: {openProjectName: string, closeProject: any}
                             </a> : 
                             project.name}
                         </h1>
+                        {project.url && project.url2 &&
+                            <p className='riverHack mini-link'>
+                                <a href={project.url} target="_blank" title="Open link">
+                                    Link 1
+                                    <img src={link} className="link-icon black" alt="Open Link" />
+                                    <img src={link_purple} className="link-icon purple" alt="Open Link"/>
+                                </a>
+                                &nbsp;&nbsp;
+                                <a href={project.url2} target="_blank" title="Open link">
+                                    Link 2
+                                    <img src={link} className="link-icon black" alt="Open Link" />
+                                    <img src={link_purple} className="link-icon purple" alt="Open Link"/>
+                                </a>
+                            </p>}
                         {project.videoUrl && 
                         <iframe id="video"
                             src={project.videoUrl}>

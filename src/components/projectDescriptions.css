@@ -21,3 +21,7 @@ a:hover .black {
 a:hover .purple {
     display: inline;
 }
+
+.mini-link {
+    font-size: 1.2em;
+}

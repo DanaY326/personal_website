@@ -1,13 +1,14 @@
 import './projects.css'
 
 const projectList = [
-    "PDF vector search",
+    "PDF Vector Search",
     "AI Agent Builder",
 	"Deepmind Landing Page Clone",
 	"BridgeTO",
 	"Logo Scanning Education App",
 	"Python ML Projects",
-    "Midnight Sun Rayce Car Team"
+    "Midnight Sun Rayce Car Team",
+    "This Website"
 ]
 
 const Projects = (props: {openProject: React.Dispatch<React.SetStateAction<string>>}) => {

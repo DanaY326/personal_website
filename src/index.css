@@ -29,16 +29,6 @@ body {
   place-items: center;
   min-width: 240px;
   min-height: 100vh;
-
-  user-select: none;
-  touch-action: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 h1 {
@@ -54,16 +44,25 @@ p {
 }
 
 button {
-  background-color: white;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  /* padding: 0.6em 1.2em; */
+  background-color: transparent;
+  border: transparent;
   color: black;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input { 
+  -webkit-appearance:none; 
+  -moz-appearance: none;
+  appearance: none;
 }
 
 @font-face{

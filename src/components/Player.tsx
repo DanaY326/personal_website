@@ -61,9 +61,9 @@ export default class Player {
 
         //touch
         window.removeEventListener('touchstart', this.touchStart);
-        window.removeEventListener('touchEnd', this.touchEnd);
+        window.removeEventListener('touchend', this.touchEnd);
         window.addEventListener('touchstart', this.touchStart);
-        window.addEventListener('touchEnd', this.touchEnd);
+        window.addEventListener('touchend', this.touchEnd);
     }
 
     draw() {
