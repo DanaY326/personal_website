@@ -53,7 +53,7 @@ const projectList: projectInfo[] = [
     },
     {
         name:"This Website",
-        description: "Written in React and TypeScript with Vite, this portfolio website was lots of fun to build!",
+        description: "Written in React and TypeScript with Vite, this portfolio website was lots of fun to build! I wanted specifically to learn to deploy a website, and while this one is just a frontend website, I learned about how to deploy static sites (in this case to GitHub pages) and how to configure custom domains.",
     }
 ];
 
