@@ -8,6 +8,7 @@ import cppImg from '../assets/game/cpp.png'
 import jsImg from '../assets/game/js.png'
 import pythonImg from '../assets/game/python.png'
 import reactImg from '../assets/game/react.png'
+import { mobileCheck } from "./GameHinter";
 
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 200;
@@ -34,6 +35,8 @@ export const getScaleRatio = () => {
         return screenHeight / GAME_HEIGHT;
     }
 }
+
+const isMobile = mobileCheck();
 
 const Game = () => {
     const canvas = document.getElementById("game") as HTMLCanvasElement;
@@ -168,9 +171,15 @@ const Game = () => {
             const fontSize = 40 * getScaleRatio();
             ctx.font = `${fontSize}px PoiretOne`;
             ctx.fillStyle = "#797979ff";
-            const x = canvas.width / 7;
-            const y = canvas.height / 2;
-            ctx.fillText("Tap Screen or Press Space to Start", x, y);
+            if (isMobile) {
+                const x = canvas.width / 4;
+                const y = canvas.height / 2.3;
+                ctx.fillText("Tap Anywhere to Begin", x, y);
+            } else {
+                const x = canvas.width / 3.5;
+                const y = canvas.height / 2.3;
+                ctx.fillText("Press Space to Begin", x, y);
+            }
         }
     }
 
