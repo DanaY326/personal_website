@@ -23,8 +23,8 @@ const projectList: projectInfo[] = [
         url: "https://github.com/DanaY326/pdf-vector-search"
     },
 	{
-        name: "Deepmind Landing Page Clone",
-        description: "I reverse-engineered the frontpage of Google AI and added a Gemini chatbot. This was my first web development project and I specifically wanted to learn about frontend and React.",
+        name: "Google AI Landing Page Clone",
+        description: "I reverse-engineered the frontpage of Google Deepmind and added a Gemini chatbot. This was my first web development project and I specifically wanted to learn about frontend and React.",
         videoUrl: "https://www.youtube.com/embed/fmrNWGYIJAA",
         url: "https://github.com/DanaY326/home-page"
     },

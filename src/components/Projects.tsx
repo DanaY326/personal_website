@@ -3,7 +3,7 @@ import './projects.css'
 const projectList = [
     "PDF Vector Search",
     "AI Agent Builder",
-	"Deepmind Landing Page Clone",
+	"Google AI Landing Page Clone",
 	"BridgeTO",
 	"Logo Scanning Education App",
 	"Python ML Projects",
