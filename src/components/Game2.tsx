@@ -133,7 +133,7 @@ const Game = () => {
             hasAddedEventListenersForRestart = true;
 
             setTimeout(() => {
-                window.addEventListener('keydown', reset, {once: true});
+                window.addEventListener('keydown', keyReset, {once: true});
                 window.addEventListener('touchstart', reset, {once: true});
             }, 200);
         }
@@ -148,6 +148,15 @@ const Game = () => {
         ground?.reset();
         obstacleController?.reset();
         gameSpeed = GAME_SPEED_START;
+    }
+
+    const keyReset = (event: KeyboardEvent) => {
+        if (event.code === "Space") {
+            event.preventDefault();
+            reset(event);
+        } else {
+            window.addEventListener('keydown', keyReset, {once: true});
+        }
     }
 
     const updateGameSpeed = (frameTimeDelta: number) => {
@@ -223,7 +232,7 @@ const Game = () => {
 
     requestAnimationFrame(gameLoop);
 
-    window.addEventListener('keydown', reset, {once: true, capture: true});
+    window.addEventListener('keydown', keyReset, {once: true, capture: true});
     window.addEventListener('touchstart', reset, {once: true, capture: true});
 
 
