@@ -59,45 +59,46 @@ const projectList: projectInfo[] = [
 
 const ProjectDescriptions = (props: {openProjectName: string, closeProject: any}) => {
     const {openProjectName, closeProject} = props;
+    const project = projectList.find((listItem: projectInfo) => {
+        return openProjectName === listItem.name;
+    });
 
     return (
-        <div className="project-container">
-            {projectList.map((project: projectInfo) => {
-                return (
-                    <Popup isOpen={openProjectName === project.name} onClose={closeProject}>
-                        <h1 className='riverHack'>
-                            {project.url && !project.url2 ? 
-                            <a href={project.url} target="_blank" title="Open link">
-                                {project.name}
-                                <img src={link} className="link-icon black" alt="Open Link" />
-                                <img src={link_purple} className="link-icon purple" alt="Open Link"/>
-                            </a> : 
-                            project.name}
-                        </h1>
-                        {project.url && project.url2 &&
-                            <p className='riverHack mini-link'>
-                                <a href={project.url} target="_blank" title="Open link">
-                                    Link 1
-                                    <img src={link} className="link-icon black" alt="Open Link" />
-                                    <img src={link_purple} className="link-icon purple" alt="Open Link"/>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a href={project.url2} target="_blank" title="Open link">
-                                    Link 2
-                                    <img src={link} className="link-icon black" alt="Open Link" />
-                                    <img src={link_purple} className="link-icon purple" alt="Open Link"/>
-                                </a>
-                            </p>}
-                        {project.videoUrl && 
-                        <iframe id="video"
-                            src={project.videoUrl}>
-                        </iframe>}
-                        <p>{project.description}</p>
-                    </Popup>
-                );
-            })}
-        </div>
-    )
+        project 
+        ? 
+        <Popup isOpen={true} onClose={closeProject}>
+            <h1 className='riverHack'>
+                {project.url && !project.url2 ? 
+                <a href={project.url} target="_blank" title="Open link">
+                    {project.name}
+                    <img src={link} className="link-icon black" alt="Open Link" />
+                    <img src={link_purple} className="link-icon purple" alt="Open Link"/>
+                </a> : 
+                project.name}
+            </h1>
+            {project.url && project.url2 &&
+                <p className='riverHack mini-link'>
+                    <a href={project.url} target="_blank" title="Open link">
+                        Link 1
+                        <img src={link} className="link-icon black" alt="Open Link" />
+                        <img src={link_purple} className="link-icon purple" alt="Open Link"/>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href={project.url2} target="_blank" title="Open link">
+                        Link 2
+                        <img src={link} className="link-icon black" alt="Open Link" />
+                        <img src={link_purple} className="link-icon purple" alt="Open Link"/>
+                    </a>
+                </p>}
+            {project.videoUrl && 
+            <iframe id="video"
+                src={project.videoUrl}>
+            </iframe>}
+            <p>{project.description}</p>
+        </Popup> 
+        : 
+        <></>
+    );
 }
 
 export default ProjectDescriptions;
