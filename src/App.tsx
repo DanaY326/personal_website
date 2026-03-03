@@ -40,7 +40,7 @@ function App() {
       <Popup isOpen={isFirstTimeOpeningProjects && isProjectsOpen} onClose={() => setIsFirstTimeOpeningProjects(false)}>
         <p>These are all of my projects. Click on their names to find out more!</p>
       </Popup>
-      <Popup isOpen={isFirstTimeOpeningGame && isGamePopupOpen} onClose={() => {/*window.removeEventListener("touchstart", showBugFunc); window.removeEventListener("touchstart", showBugFunc);*/ setTimeout(() => setIsFirstTimeOpeningGame(false), 0);}}>
+      <Popup isOpen={isFirstTimeOpeningGame && isGamePopupOpen} onClose={() => setIsFirstTimeOpeningGame(false)}>
         <p>This bug wants to infect my favorite programming languages and frameworks. Help me keep the bug away!</p>
       </Popup>
       <ProjectDescriptions openProjectName={openProject} closeProject={() => setOpenProject("")}/>

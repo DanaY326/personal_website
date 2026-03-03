@@ -15,9 +15,9 @@ const Projects = (props: {openProject: React.Dispatch<React.SetStateAction<strin
     const {openProject} = props;
     return (
         <div className="project-container">
-            {projectList.map((name: string) => {
+            {projectList.map((name: string, index: number) => {
                 return (
-                    <button className="project-button" title="Click me" onClick={() => openProject(name)}>
+                    <button className="project-button" title="Click me" onClick={() => openProject(name)} key={index}>
                         <p className="body-text black-hover project-button-text">{name}</p>
                     </button>
                 );
