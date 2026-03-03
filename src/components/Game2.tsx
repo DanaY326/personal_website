@@ -118,9 +118,11 @@ const Game = () => {
     
     setScreen(); 
 
+    window.removeEventListener('resize', () => {setTimeout(setScreen, 500)});
     window.addEventListener('resize', () => {setTimeout(setScreen, 500)});
 
     if (screen.orientation) {
+        screen.orientation.removeEventListener('change', setScreen);
         screen.orientation.addEventListener('change', setScreen);
     }
 
@@ -134,15 +136,17 @@ const Game = () => {
     const setupGameReset = () => {
         if (!hasAddedEventListenersForRestart) {
             hasAddedEventListenersForRestart = true;
-
             setTimeout(() => {
-                window.addEventListener('keydown', keyReset, {once: true});
-                window.addEventListener('touchstart', reset, {once: true});
+                window.removeEventListener('keydown', keyReset);
+                window.removeEventListener('touchstart', reset);
+                window.addEventListener('keydown', keyReset);
+                window.addEventListener('touchstart', reset);
             }, 200);
         }
     }
 
     const reset = (event: Event) => {
+        window.removeEventListener('touchstart', reset);
         event.stopPropagation();
         hasAddedEventListenersForRestart = false;
         gameOver = false;
@@ -154,11 +158,12 @@ const Game = () => {
     }
 
     const keyReset = (event: KeyboardEvent) => {
+        window.removeEventListener('keydown', keyReset);
         if (event.code === "Space") {
             event.preventDefault();
             reset(event);
         } else {
-            window.addEventListener('keydown', keyReset, {once: true});
+            window.addEventListener('keydown', keyReset);
         }
     }
 
@@ -205,11 +210,11 @@ const Game = () => {
         clearScreen();
 
 
-        if (!gameOver && !waitingToStart) {
+        if (!gameOver && !waitingToStart && obstacleController && ground && player) {
             //Update game objects
-            obstacleController?.update(gameSpeed, frameTimeDelta);
-            ground?.update(gameSpeed, frameTimeDelta);
-            player?.update(gameSpeed, frameTimeDelta);
+            obstacleController.update(gameSpeed, frameTimeDelta);
+            ground.update(gameSpeed, frameTimeDelta);
+            player.update(gameSpeed, frameTimeDelta);
             updateGameSpeed(frameTimeDelta);
         }
 
@@ -241,9 +246,9 @@ const Game = () => {
 
     requestAnimationFrame(gameLoop);
 
-    window.addEventListener('keydown', keyReset, {once: true, capture: true});
-    window.addEventListener('touchstart', reset, {once: true, capture: true});
-
+    window.addEventListener('keydown', keyReset);
+    window.addEventListener('touchstart', reset);
+    hasAddedEventListenersForRestart = true;
 
     return (
         <div>
