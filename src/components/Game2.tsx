@@ -138,15 +138,16 @@ const Game = () => {
             hasAddedEventListenersForRestart = true;
             setTimeout(() => {
                 window.removeEventListener('keydown', keyReset);
-                window.removeEventListener('touchstart', reset);
                 window.addEventListener('keydown', keyReset);
-                window.addEventListener('touchstart', reset);
+                if (canvas) {
+                    canvas.removeEventListener('touchstart', mobileReset);
+                    canvas.addEventListener('touchstart', mobileReset);
+                }
             }, 200);
         }
     }
 
     const reset = (event: Event) => {
-        window.removeEventListener('touchstart', reset);
         event.stopPropagation();
         hasAddedEventListenersForRestart = false;
         gameOver = false;
@@ -167,6 +168,16 @@ const Game = () => {
         }
     }
 
+    const mobileReset = (event: TouchEvent) => {
+        const displayValue = window.getComputedStyle(canvas).display;
+        if (displayValue !== "none") {
+            if (canvas) {
+                canvas.removeEventListener('touchstart', mobileReset);
+            }
+            reset(event);
+        }
+    }
+
     const updateGameSpeed = (frameTimeDelta: number) => {
         gameSpeed += frameTimeDelta * GAME_SPEED_INCREMENT;
     }
@@ -177,9 +188,9 @@ const Game = () => {
             ctx.font = `${fontSize}px PoiretOne`;
             ctx.fillStyle = "#797979ff";
             if (isMobile) {
-                const x = canvas.width / 4;
+                const x = canvas.width / 3.2;
                 const y = canvas.height / 2.3;
-                ctx.fillText("Tap Anywhere to Begin", x, y);
+                ctx.fillText("Tap Game to Begin", x, y);
             } else {
                 const x = canvas.width / 3.5;
                 const y = canvas.height / 2.3;
@@ -247,7 +258,9 @@ const Game = () => {
     requestAnimationFrame(gameLoop);
 
     window.addEventListener('keydown', keyReset);
-    window.addEventListener('touchstart', reset);
+    if (canvas) {
+        canvas.addEventListener('touchstart', mobileReset);
+    }
     hasAddedEventListenersForRestart = true;
 
     return (

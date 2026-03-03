@@ -60,10 +60,12 @@ export default class Player {
         window.addEventListener('keyup', this.keyUp);
 
         //touch
-        window.removeEventListener('touchstart', this.touchStart);
-        window.removeEventListener('touchend', this.touchEnd);
-        window.addEventListener('touchstart', this.touchStart);
-        window.addEventListener('touchend', this.touchEnd);
+        if (this.canvas !== null) {
+            this.canvas.removeEventListener('touchstart', this.touchStart);
+            this.canvas.removeEventListener('touchend', this.touchEnd);
+            this.canvas.addEventListener('touchstart', this.touchStart);
+            this.canvas.addEventListener('touchend', this.touchEnd);
+        }
     }
 
     draw() {
