@@ -5,7 +5,7 @@ const projectList = [
     "AI Agent Builder",
 	"Google AI Landing Page Clone",
 	"BridgeTO",
-	"Logo Scanning Education App",
+	"Investing Game",
 	"Python ML Projects",
     "Midnight Sun Rayce Car Team",
     "This Website"

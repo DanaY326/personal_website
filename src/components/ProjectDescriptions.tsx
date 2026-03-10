@@ -35,7 +35,7 @@ const projectList: projectInfo[] = [
         url: "https://github.com/DanaY326/BridgeTO"
     },
 	{
-        name:"Logo Scanning Education App",
+        name:"Investing Game",
         description: "I wanted to learn how to use React Native Expo. I made a mobile game for a hackathon that lets kids buy and sell 'Wealthlings', monsters that represent stocks. Users can take pictures of logos in their environment and get the corresponding stock. The health of each Wealthling mirrors the real-time movement of those stocks on the market using YFinance.",
         videoUrl: "https://www.youtube.com/embed/6vxH_ES7E5o",
         url: "https://github.com/nkaruna09/Wealthlings"
