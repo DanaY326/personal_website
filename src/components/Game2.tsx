@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./game2.css"
 import Player from './Player'
 import Ground from './Ground'
@@ -70,6 +70,8 @@ const Game = () => {
     let ground: Ground | null = null;
     let obstacleController: ObstacleController | null = null;
 
+    const [blurred, setBlurred] = useState(false);
+
     let previousTime: number | null = null;
     let gameSpeed = GAME_SPEED_START;
     let gameOver = false;
@@ -120,6 +122,9 @@ const Game = () => {
 
     window.removeEventListener('resize', () => {setTimeout(setScreen, 500)});
     window.addEventListener('resize', () => {setTimeout(setScreen, 500)});
+    
+    window.addEventListener('blur', () => setBlurred(true));
+    window.addEventListener('focus', () => setBlurred(false));
 
     if (screen.orientation) {
         screen.orientation.removeEventListener('change', setScreen);
@@ -252,10 +257,20 @@ const Game = () => {
             showStartingGameText();
         }
 
-        requestAnimationFrame(gameLoop);
+        if (!blurred) {
+            requestAnimationFrame(gameLoop);
+        }
     }
 
-    requestAnimationFrame(gameLoop);
+    useEffect(() => {
+        if (!blurred) {
+            requestAnimationFrame(gameLoop);
+        }
+    }, [blurred])
+
+    if (!blurred) {
+        requestAnimationFrame(gameLoop);
+    }
 
     window.addEventListener('keydown', keyReset);
     if (canvas) {
