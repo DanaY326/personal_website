@@ -3,7 +3,7 @@ import Popup from './Popup'
 import link from '../assets/link.png'
 import link_purple from '../assets/link-purple.png'
 
-interface projectInfo {
+export interface projectInfo {
     name: string, 
     description: string,
     videoUrl?: string,
@@ -11,7 +11,7 @@ interface projectInfo {
     url2?: string
 }
 
-const projectList: projectInfo[] = [
+export const projectList: projectInfo[] = [
     {
         name:"AI Agent Builder",
         description: "As part of my previous internship, I built and deployed a GUI for LangChain, a tool used to build AI agent workflows. Some functionalities that I supported were vector databases, MCP servers and LLM APIs. This significantly streamlined the workflow for adding AI features to the company's medical software."

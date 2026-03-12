@@ -1,24 +1,15 @@
 import './projects.css'
-
-const projectList = [
-    "PDF Vector Search",
-    "AI Agent Builder",
-	"Google AI Landing Page Clone",
-	"BridgeTO",
-	"Investing Game",
-	"Python ML Projects",
-    "Midnight Sun Rayce Car Team",
-    "This Website"
-]
+import { projectList } from './ProjectDescriptions';
+import type { projectInfo } from './ProjectDescriptions';
 
 const Projects = (props: {openProject: React.Dispatch<React.SetStateAction<string>>}) => {
     const {openProject} = props;
     return (
         <div className="project-container">
-            {projectList.map((name: string, index: number) => {
+            {projectList.map((project: projectInfo, index: number) => {
                 return (
-                    <button className="project-button" title="Click me" onClick={() => openProject(name)} key={index}>
-                        <p className="body-text black-hover project-button-text" style={{textAlign: 'center'}}>{name}</p>
+                    <button className="project-button" title="Click me" onClick={() => openProject(project.name)} key={index}>
+                        <p className="body-text black-hover project-button-text" style={{textAlign: 'center'}}>{project.name}</p>
                     </button>
                 );
             })}
