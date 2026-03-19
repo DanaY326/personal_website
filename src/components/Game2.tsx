@@ -123,6 +123,8 @@ const Game = () => {
     window.removeEventListener('resize', () => {setTimeout(setScreen, 500)});
     window.addEventListener('resize', () => {setTimeout(setScreen, 500)});
     
+    window.removeEventListener('blur', () => setBlurred(true));
+    window.removeEventListener('focus', () => setBlurred(false));
     window.addEventListener('blur', () => setBlurred(true));
     window.addEventListener('focus', () => setBlurred(false));
 
@@ -164,12 +166,10 @@ const Game = () => {
     }
 
     const keyReset = (event: KeyboardEvent) => {
-        window.removeEventListener('keydown', keyReset);
         if (event.code === "Space") {
             event.preventDefault();
             reset(event);
-        } else {
-            window.addEventListener('keydown', keyReset);
+            window.removeEventListener('keydown', keyReset);
         }
     }
 
