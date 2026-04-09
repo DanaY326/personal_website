@@ -41,7 +41,7 @@ function App() {
         <p>These are all of my projects. Click on their names to find out more!</p>
       </Popup>
       <Popup isOpen={isFirstTimeOpeningGame && isGamePopupOpen} onClose={() => setIsFirstTimeOpeningGame(false)}>
-        <p>This bug wants to infect my favorite programming languages and frameworks. Help me keep the bug away!</p>
+        <p>This bug wants to infect my favorite programming languages and frameworks. Help me keep the bug away! (Note: you can jump higher if you hold longer.)</p>
       </Popup>
       <ProjectDescriptions openProjectName={openProject} closeProject={() => setOpenProject("")}/>
       <div  style={{filter: isPopupOpen || openProject !== "" ? 'blur(1.5px)' : ''}}>
