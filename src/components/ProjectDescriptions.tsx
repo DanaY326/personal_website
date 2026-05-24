@@ -47,6 +47,11 @@ export const projectList: projectInfo[] = [
         url2: "https://github.com/DanaY326/pytorch-cnn"
     },
     {
+        name: "Wordo", 
+        description: "I made a mobile app that is a clone of Wordle. This was as a small exercise to learn more about React Native and how to package and release Android apps. If you have an Android app, you can download the apk under the releases section in the repository and try out the app!",
+        url: "https://github.com/DanaY326/wordle"
+    },
+    {
         name:"Midnight Sun Rayce Car Team",
         description: "I'm contributing to the firmware for a solar race car design team at UWaterloo. It's been a great learning experience applying what I learned in class about C to the real world. Currently, I'm modifying the audio systems to use amplitude modulation to increase the volume, which is too quiet for time-sensitive functions like turn signals.",
         url: "https://www.uwmidsun.com"
