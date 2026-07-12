@@ -13,6 +13,11 @@ export interface projectInfo {
 
 export const projectList: projectInfo[] = [
     {
+        name:"Astelle AI",
+        description: "I was the first developer for an educational AI platform that is currently being piloted to 100+ students at the University of Waterloo who are taking courses such as Astronomy and Human-Computer Interaction. This is an AI chat platform that answers students questions by retrieving uploaded course materials (slides, video transcripts, etc.) through a RAG system and using document extraction technologies such as OCR and image captioning. On the professor side, it also provides insights based on topics that the students are doing well or struggling with. Professors can get alerts as well about popular questions and what questions the AI is less sure about, and can correct hallucinations in any answer.",
+        url: "https://astelle.ai"
+    },
+    {
         name:"AI Agent Builder",
         description: "As part of my previous internship, I built and deployed a GUI for LangChain, a tool used to build AI agent workflows. Some functionalities that I supported were vector databases, MCP servers and LLM APIs. This significantly streamlined the workflow for adding AI features to the company's medical software."
     },
