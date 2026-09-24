@@ -29,9 +29,15 @@ export const projectList: projectInfo[] = [
     },
 	{
         name: "Google AI Landing Page Clone",
-        description: "I reverse-engineered the frontpage of Google Deepmind and added a Gemini chatbot. This was my first web development project and I specifically wanted to learn about frontend and React.",
+        description: "I reverse-engineered the frontpage of Google Deepmind and added a Gemini chatbot. I also used AWS S3 and DynamoDB to store the chat history. This was my first web development project and I specifically wanted to learn about React and AWS.",
         videoUrl: "https://www.youtube.com/embed/fmrNWGYIJAA",
         url: "https://github.com/DanaY326/home-page"
+    },
+    {
+        name: "Check In Champions", 
+        description: "For Hack the 6ix, I made a hotel marketing site with a twist. It is a FIFA World Cup video game! Instead of players, we have cards. There is single player, multiplayer and even a multiplayer karaoke mode. Shoutout to my wonderful teammates Raihan, Alberto and Patrick!", 
+        videoUrl: "https://www.youtube.com/embed/bcZ6If6qLWM?si=nAJjRCe0VnBpLUmK",
+        url: "https://check-in-champions.vercel.app/"
     },
 	{
         name:"BridgeTO",
